@@ -1,5 +1,5 @@
-#Account invited (B) assume role with the permission for somme services of the account owner(A)
-
+# Account invited (B) assume role with the permission for somme services of the account owner(A)
+Attention! The Switch Role is configured by the Administrator account, for their users et accounts
 Account (A) Origin
 1. create a role: type AWS Account (with the number of 3rd party account)
 Role name: 3rdPartyAssumeRole
