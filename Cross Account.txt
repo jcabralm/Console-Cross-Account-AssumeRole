@@ -1,0 +1,43 @@
+#Account invited (B) assume role with the permission for somme services of the account owner(A)
+
+Account (A) Origin
+1. create a role: type AWS Account (with the number of 3rd party account)
+Role name: 3rdPartyAssumeRole
+modele policy:
+ 
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "207700887884"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+This role grant 3rdParty permission to another account to do something in own account.
+You can give more permission if you want!
+
+--------------------
+Account (B) Visiteur
+Create a user: with no permission
+
+Create a role: name
+Resource = arn of the role policy, created on the Account (A)
+Modele Role:
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::976658150418:role/3rdPartyAssumeRole"
+        }
+    ]
+}
+
+Attach it to the User/Group
+This role grant access of the users to assume role to the another account, in this case account (A)
